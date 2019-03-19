@@ -1,6 +1,7 @@
 homeassistant:
   # Name of the location where Home Assistant is running
   name: Home
+  temperature_unit: C
   # Location required to calculate the time the sun rises and sets
   latitude: !secret latitude_home
   longitude: !secret longitude_home
@@ -32,11 +33,15 @@ http:
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
+lovelace:
+  mode: yaml
+
+# Enables configuration UI
 config:
 
 
 # Show the introduction message on startup.
-introduction:
+# introduction:
 
 mqtt:
   broker: !secret mqtt_broker

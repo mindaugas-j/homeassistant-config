@@ -7,3 +7,14 @@
   command: "cat /sys/class/thermal/thermal_zone0/temp"
   unit_of_measurement: "°C"
   value_template: '{{ value | multiply(0.001) | round(2) }}'
+
+- platform: template
+  sensors:
+    door_last_close:
+      friendly_name: "Doors Last Closed"
+      value_template: "{{ as_timestamp(states.binary_sensor.door.last_updated) | timestamp_custom('%H:%M') }}"
+      icon_template: mdi:history
+    hallway_last_motion:
+      friendly_name: "Hallway Last Motion"
+      value_template: "{{ as_timestamp(states.binary_sensor.hallway_motion.last_updated) | timestamp_custom('%H:%M') }}"
+      icon_template: mdi:history
