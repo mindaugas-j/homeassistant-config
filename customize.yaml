@@ -1,0 +1,27 @@
+person.dominykas:
+  entity_picture: https://mindaugas.jursys.net/img/Dominykas.jpg
+person.mindaugas:
+  entity_picture: https://mindaugas.jursys.net/img/Mindaugas.jpg
+device_tracker.huawei_p20_d452557e398367_dlink:
+  hidden: true
+device_tracker.redminote3_fetusdele_dlink:
+  hidden: true
+device_tracker.desktop_djmci5b_dlink:
+  friendly_name: Domo PC
+  hidden: true
+device_tracker.dlinkrouter_dlink:
+  hidden: true
+device_tracker.samsung_dlink: {}
+person.egle:
+  entity_picture: https://mindaugas.jursys.net/img/Egle.jpg
+device_tracker.chromecast_dlink:
+  friendly_name: Chromecast
+  hidden: true
+device_tracker.redminote4_redmi_dlink:
+  hidden: true
+device_tracker.google_home_mini_dlink:
+  hidden: true
+binary_sensor.door:
+  device_class: door
+device_tracker.sonoff_0662_dlink:
+  friendly_name: SonoffBridge

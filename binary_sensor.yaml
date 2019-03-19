@@ -1,0 +1,14 @@
+# Door
+- platform: rpi_gpio
+  ports:
+    5: Door
+
+# PIR
+- platform: mqtt
+  state_topic: "tele/sonoff1/RESULT"
+  name: "Hallway motion"
+  value_template: '{{value_json.RfReceived.Data}}'
+  payload_on: "D5A6CE"
+  payload_off: "D5A6CEOFF"
+  device_class: motion
+  qos: 0
