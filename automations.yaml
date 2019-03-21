@@ -1,4 +1,4 @@
-- alias: Reset PIR Motion State
+- alias: PIR 1 Reset
   hide_entity: true
   initial_state: 'on'
   trigger:
@@ -10,5 +10,21 @@
   action:
     service: mqtt.publish
     data:
-      topic: tele/sonoff1/RESULT
+      topic: sonoff1/tele/RESULT
       payload: "{\"RfReceived\":{\"Data\":\"D5A6CEOFF\"}}"
+
+
+- alias: PIR Green Reset
+  hide_entity: true
+  initial_state: 'on'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.hallway_motion
+    to: 'on'
+    for:
+      minutes: 2
+  action:
+    service: mqtt.publish
+    data:
+      topic: sonoff1/tele/RESULT
+      payload: "{\"RfReceived\":{\"Data\":\"D4220EOFF\"}}"

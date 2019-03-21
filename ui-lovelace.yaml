@@ -40,6 +40,7 @@ views:
     id: home
     title: Home
     cards:
+      # Floor plan ----
       - type: picture-elements
         image: /local/img/floor-plan.png
         #title: Plan
@@ -53,25 +54,35 @@ views:
             entity: binary_sensor.hallway_motion
             style:
               top: 40%
-              left: 40%
+              left: 38%
+          - type: state-icon
+            entity: binary_sensor.green_motion
+            style:
+              top: 46%
+              left: 68%
+      # Last values -----
       - type: entities
-        title: Entrance
+        # title: Entrance
         show_header_toggle: false
         entities:
-          - binary_sensor.door
-          - binary_sensor.hallway_motion
+          #- binary_sensor.door
+          #- binary_sensor.hallway_motion
           - sensor.door_last_close
           - sensor.hallway_last_motion
+          - sensor.green_last_motion
+
+      # Persons ----
       - type: entities
-        title: Persons
+        # title: Persons
         show_header_toggle: false
         entities:
+          - entity: person.dominykas
+            secondary_info: last-changed
           - entity: person.egle
             secondary_info: last-changed
           - entity: person.mindaugas
             secondary_info: last-changed
-          - entity: person.dominykas
-            secondary_info: last-changed
+
             
   - icon: mdi:lan
     id: devices

@@ -11,10 +11,14 @@
 - platform: template
   sensors:
     door_last_close:
-      friendly_name: "Doors Last Closed"
+      friendly_name: "Doors Closed"
       value_template: "{{ as_timestamp(states.binary_sensor.door.last_updated) | timestamp_custom('%H:%M') }}"
       icon_template: mdi:history
     hallway_last_motion:
       friendly_name: "Hallway Last Motion"
       value_template: "{{ as_timestamp(states.binary_sensor.hallway_motion.last_updated) | timestamp_custom('%H:%M') }}"
+      icon_template: mdi:history
+    green_last_motion:
+      friendly_name: "Green Last Motion"
+      value_template: "{{ as_timestamp(states.binary_sensor.green_motion.last_updated) | timestamp_custom('%H:%M') }}"
       icon_template: mdi:history

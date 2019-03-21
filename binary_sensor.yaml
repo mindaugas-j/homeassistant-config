@@ -3,12 +3,22 @@
   ports:
     5: Door
 
-# PIR
+# PIR 1
 - platform: mqtt
-  state_topic: "tele/sonoff1/RESULT"
+  state_topic: "sonoff1/tele/RESULT"
   name: "Hallway motion"
   value_template: '{{value_json.RfReceived.Data}}'
   payload_on: "D5A6CE"
   payload_off: "D5A6CEOFF"
+  device_class: motion
+  qos: 0
+
+# PIR 2 Green
+- platform: mqtt
+  state_topic: "sonoff1/tele/RESULT"
+  name: "Green motion"
+  value_template: '{{value_json.RfReceived.Data}}'
+  payload_on: "D4220E"
+  payload_off: "D4220EOFF"
   device_class: motion
   qos: 0
