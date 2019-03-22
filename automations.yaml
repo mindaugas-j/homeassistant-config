@@ -1,30 +1,60 @@
-- alias: PIR 1 Reset
-  hide_entity: true
-  initial_state: 'on'
-  trigger:
-    platform: state
-    entity_id: binary_sensor.hallway_motion
-    to: 'on'
-    for:
-      minutes: 2
-  action:
-    service: mqtt.publish
-    data:
-      topic: sonoff1/tele/RESULT
-      payload: "{\"RfReceived\":{\"Data\":\"D5A6CEOFF\"}}"
+#- alias: PIR 1 Reset
+#  hide_entity: true
+#  initial_state: 'on'
+#  trigger:
+#    platform: state
+#    entity_id: binary_sensor.hallway_motion
+#    to: 'on'
+#    for:
+#      minutes: 2
+#  action:
+#    service: mqtt.publish
+#    data:
+#      topic: sonoff1/tele/RESULT
+#      payload: "{\"RfReceived\":{\"Data\":\"D5A6CEOFF\"}}"
 
 
-- alias: PIR Green Reset
-  hide_entity: true
-  initial_state: 'on'
+#- alias: PIR Green Reset
+#  hide_entity: true
+#  initial_state: 'on'
+#  trigger:
+#    platform: state
+#    entity_id: binary_sensor.hallway_motion
+#    to: 'on'
+#    for:
+#      minutes: 2
+#  action:
+#    service: mqtt.publish
+#    data:
+#      topic: sonoff1/tele/RESULT
+#      payload: "{\"RfReceived\":{\"Data\":\"D4220EOFF\"}}"
+
+- alias: Notify on door open
   trigger:
-    platform: state
-    entity_id: binary_sensor.hallway_motion
-    to: 'on'
-    for:
-      minutes: 2
+    - platform: state
+      entity_id: binary_sensor.door
+      from: 'off'
+      to: 'on'
   action:
-    service: mqtt.publish
-    data:
-      topic: sonoff1/tele/RESULT
-      payload: "{\"RfReceived\":{\"Data\":\"D4220EOFF\"}}"
+    - service: notify.notify
+      data:
+        title: Door
+        message: Door opened
+        data:
+          vibrate: #vibrate 300ms,pause100,vibrate 400
+            - 300
+            - 100
+            - 400
+          image: "https://mindaugas.jursys.net/img/Dominykas.jpg"
+
+- alias: Safe opened
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.safe_1
+      from: 'off'
+      to: 'on'
+  action:
+    - service: notify.notify
+      data:
+        title: Safe
+        message: Safe opened

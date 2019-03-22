@@ -54,6 +54,12 @@ mqtt:
 # http:
 #   base_url: example.duckdns.org:8123
 
+notify:
+  - platform: html5
+    # name: NOTIFIER_NAME
+    vapid_pub_key: !secret vapid_pub_key
+    vapid_prv_key: !secret vapid_prv_key
+    vapid_email: !secret vapid_email
 
 # Text to speech
 tts:

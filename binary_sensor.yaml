@@ -1,3 +1,5 @@
+# https://www.home-assistant.io/components/binary_sensor/
+
 # Door
 - platform: rpi_gpio
   ports:
@@ -5,20 +7,51 @@
 
 # PIR 1
 - platform: mqtt
-  state_topic: "sonoff1/tele/RESULT"
   name: "Hallway motion"
+  state_topic: "sonoff1/tele/RESULT"
   value_template: '{{value_json.RfReceived.Data}}'
   payload_on: "D5A6CE"
-  payload_off: "D5A6CEOFF"
+  off_delay: 120
   device_class: motion
   qos: 0
 
 # PIR 2 Green
 - platform: mqtt
-  state_topic: "sonoff1/tele/RESULT"
   name: "Green motion"
+  state_topic: "sonoff1/tele/RESULT"
   value_template: '{{value_json.RfReceived.Data}}'
   payload_on: "D4220E"
-  payload_off: "D4220EOFF"
+  off_delay: 120
   device_class: motion
   qos: 0
+
+# PIR 3 Blue
+- platform: mqtt
+  name: "Blue motion"
+  state_topic: "sonoff1/tele/RESULT"
+  value_template: '{{value_json.RfReceived.Data}}'
+  payload_on: "XXXXXX"
+  off_delay: 120
+  device_class: motion
+  qos: 0
+
+
+# Safe 1 Door Senson
+- platform: mqtt
+  name: "Safe 1"
+  state_topic: "sonoff1/tele/RESULT"
+  value_template: '{{value_json.RfReceived.Data}}'
+  payload_on: "54B2A1"
+  off_delay: 300
+  device_class: door
+  qos: 1
+
+# Safe 2 Door Senson
+- platform: mqtt
+  name: "Safe 2"
+  state_topic: "sonoff1/tele/RESULT"
+  value_template: '{{value_json.RfReceived.Data}}'
+  payload_on: "XXXXXX"
+  off_delay: 300
+  device_class: door
+  qos: 1

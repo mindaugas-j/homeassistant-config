@@ -11,7 +11,6 @@ device_tracker.desktop_djmci5b_dlink:
   hidden: true
 device_tracker.dlinkrouter_dlink:
   hidden: true
-device_tracker.samsung_dlink: {}
 person.egle:
   entity_picture: https://mindaugas.jursys.net/img/Egle.jpg
 device_tracker.chromecast_dlink:
@@ -21,7 +20,16 @@ device_tracker.redminote4_redmi_dlink:
   hidden: true
 device_tracker.google_home_mini_dlink:
   hidden: true
+  icon: mdi:google-home
 binary_sensor.door:
   device_class: door
 device_tracker.sonoff_0662_dlink:
   friendly_name: SonoffBridge
+binary_sensor.safe_1:
+  icon: mdi:safe
+binary_sensor.safe_2:
+  icon: mdi:safe
+media_player.googlehome4522:
+  icon: mdi:google-home
+media_player.bedroom_tv:
+  icon: mdi:google-chrome
