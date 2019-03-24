@@ -39,6 +39,8 @@ lovelace:
 # Enables configuration UI
 config:
 
+# Enables support for tracking state changes over time
+history:
 
 # Show the introduction message on startup.
 # introduction:

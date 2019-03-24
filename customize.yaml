@@ -33,3 +33,7 @@ media_player.googlehome4522:
   icon: mdi:google-home
 media_player.bedroom_tv:
   icon: mdi:google-chrome
+sensor.dir_825acg1_kbyte_sec_received:
+  friendly_name: kbyte/sec received
+sensor.dir_825acg1_kbyte_sec_sent:
+  friendly_name: kbyte/sec sent

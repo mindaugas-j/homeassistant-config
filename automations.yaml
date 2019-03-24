@@ -45,7 +45,24 @@
             - 300
             - 100
             - 400
-          image: "https://mindaugas.jursys.net/img/Dominykas.jpg"
+          #image: "https://mindaugas.jursys.net/img/Dominykas.jpg"
+
+# Netestuota
+- alias: Notify on hi Pi CPU temp
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.pi_temp
+    above: 65
+  #condition:
+  #  condition: numeric_state
+  #  entity_id: sensor.pi_temp
+  #  above: 65
+  action:
+    service: notify.notify
+    data:
+      title: Hi Pi Temp
+      message: Pi temperature above 65C
+
 
 - alias: Safe opened
   trigger:

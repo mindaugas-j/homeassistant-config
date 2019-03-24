@@ -89,6 +89,29 @@ views:
               left: 82%
               "--paper-item-icon-color": silver
               "--paper-item-icon-active-color": red
+          # temp
+          #- type: state-icon
+          #  entity: sensor.yellow_temperature
+          #  style:
+          #    top: 84.5%
+          #    left: 42%
+          #    color: white
+          #    --iron-icon-height: 10px
+          #    --iron-icon-width: 10px
+          - type: state-label
+            entity: sensor.yellow_temperature
+            style:
+              top: 85%
+              left: 46%
+              color: "#44739e"
+              font-size: "10px"
+          - type: state-label
+            entity: sensor.yellow_humidity
+            style:
+              top: 89%
+              left: 46%
+              color: "#44739e"
+              font-size: "10px"
 
 
 #      # Floor plan ----
@@ -142,8 +165,11 @@ views:
             secondary_info: last-changed
           - entity: sensor.hallway_last_motion
             secondary_info: last-changed
+          - entity: sensor.blue_last_motion
+            secondary_info: last-changed
           - entity: sensor.green_last_motion
             secondary_info: last-changed
+          - entity: sensor.last_motion_location
 
           
       # Persons ----
@@ -166,20 +192,37 @@ views:
           - entity: binary_sensor.safe_2
             secondary_info: last-changed
 
+      - type: horizontal-stack
+        cards:
+        - type: sensor
+          name: "Living Room"
+          entity: sensor.yellow_temperature
+          #graph: line 
+        - type: sensor
+          name: "Living Room"
+          entity: sensor.yellow_humidity
+          #graph: line
+
+  - icon: mdi:chart-line
+    id: charts
+    title: History
+    cards:
+      - type: history-graph
+        title: Temperature
+        entities:
+          - entity: sensor.yellow_temperature
+            name: Living Room
+      - type: history-graph
+        title: Humidity
+        entities:
+          - entity: sensor.yellow_humidity
+            name: Living Room
 
             
   - icon: mdi:lan
     id: devices
     title: Devices
     cards:
-      - type: gauge
-        entity: sensor.pi_temp
-        name: CPU temp
-        severity:
-          green: 0
-          yellow: 45
-          red: 85
-          
       - type: sensor
         name: 'CPU Temp'
         entity: sensor.pi_temp
@@ -188,7 +231,7 @@ views:
         hours_to_show: 24
   
       - type: entities
-        title: Network
+        title: Devices
         show_header_toggle: false
         entities:
           - device_tracker.desktop_djmci5b_dlink
@@ -198,3 +241,20 @@ views:
           - device_tracker.chromecast_dlink
           - device_tracker.google_home_mini_dlink
           - device_tracker.samsung_dlink
+          - device_tracker.shellyht_58f5e2_dlink
+
+      - type: entities
+        title: Network
+        show_header_toggle: false
+        entities:
+          - sensor.dir_825acg1_kbyte_sec_received
+          - sensor.dir_825acg1_kbyte_sec_sent
+
+      - type: entities
+        title: Bateries
+        show_header_toggle: false
+        entities:
+          - entity: sensor.yellow_battery    
+            name: Shelly Living Room
+
+      

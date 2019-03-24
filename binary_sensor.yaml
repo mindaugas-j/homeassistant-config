@@ -11,7 +11,7 @@
   state_topic: "sonoff1/tele/RESULT"
   value_template: '{{value_json.RfReceived.Data}}'
   payload_on: "D5A6CE"
-  off_delay: 120
+  off_delay: 60
   device_class: motion
   qos: 0
 
@@ -21,7 +21,7 @@
   state_topic: "sonoff1/tele/RESULT"
   value_template: '{{value_json.RfReceived.Data}}'
   payload_on: "D4220E"
-  off_delay: 120
+  off_delay: 60
   device_class: motion
   qos: 0
 
@@ -30,8 +30,8 @@
   name: "Blue motion"
   state_topic: "sonoff1/tele/RESULT"
   value_template: '{{value_json.RfReceived.Data}}'
-  payload_on: "XXXXXX"
-  off_delay: 120
+  payload_on: "D598DE"
+  off_delay: 60
   device_class: motion
   qos: 0
 

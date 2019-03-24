@@ -8,17 +8,61 @@
   unit_of_measurement: "°C"
   value_template: '{{ value | multiply(0.001) | round(2) }}'
 
+- platform: mqtt
+  name: Yellow Temperature
+  device_class: temperature
+  unit_of_measurement: '°C'
+  state_topic: "shellies/shellyht-58F5E2/sensor/temperature"
+  value_template: '{{value | round(0) }}'
+  #availability_topic: "shellies/announce"
+
+- platform: mqtt
+  name: Yellow Humidity
+  device_class: humidity
+  unit_of_measurement: '%'
+  state_topic: "shellies/shellyht-58F5E2/sensor/humidity"
+  value_template: '{{value | round(0) }}'
+
+- platform: mqtt
+  name: Yellow Battery
+  device_class: battery
+  unit_of_measurement: '%'
+  state_topic: "shellies/shellyht-58F5E2/sensor/battery"
+
 - platform: template
   sensors:
     door_last_close:
       friendly_name: "Doors Closed"
       value_template: "{{ as_timestamp(states.binary_sensor.door.last_updated) | timestamp_custom('%H:%M') }}"
       icon_template: mdi:history
+    
     hallway_last_motion:
       friendly_name: "Hallway Last Motion"
       value_template: "{{ as_timestamp(states.binary_sensor.hallway_motion.last_updated) | timestamp_custom('%H:%M') }}"
       icon_template: mdi:history
+
+    blue_last_motion:
+      friendly_name: "Blue Last Motion"
+      value_template: "{{ as_timestamp(states.binary_sensor.blue_motion.last_updated) | timestamp_custom('%H:%M') }}"
+      icon_template: mdi:history
+    
     green_last_motion:
       friendly_name: "Green Last Motion"
       value_template: "{{ as_timestamp(states.binary_sensor.green_motion.last_updated) | timestamp_custom('%H:%M') }}"
       icon_template: mdi:history
+    
+    last_motion_location:
+      friendly_name: "Last Motion"
+      icon_template: mdi:walk
+      entity_id:
+        - binary_sensor.hallway_motion
+        - binary_sensor.blue_motion
+        - binary_sensor.green_motion
+      value_template: >
+        {%- set sensors = [states.binary_sensor.hallway_motion, states.binary_sensor.blue_motion, states.binary_sensor.green_motion] %}
+        {% for sensor in sensors %}
+          {% if as_timestamp(sensor.last_changed) == as_timestamp(sensors | map(attribute='last_changed') | max) %}
+            {{ sensor.name }}
+          {% endif %}
+        {% endfor %}
+
