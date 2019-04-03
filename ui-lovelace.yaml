@@ -41,77 +41,6 @@ views:
     title: Home
     cards:
 
-      # Floor plan 3D ----
-      - type: picture-elements
-        image: /local/img/3D-1024.jpg
-        elements:
-          # Door
-          - type: state-icon
-            entity: binary_sensor.door
-            style:
-              top: 10%
-              left: 46%
-              "--paper-item-icon-active-color": red
-          # Hallway
-          - type: state-icon
-            entity: binary_sensor.hallway_motion
-            style:
-              top: 43%
-              left: 43%
-              "--paper-item-icon-active-color": red
-          # Green
-          - type: state-icon
-            entity: binary_sensor.green_motion
-            style:
-              top: 40%
-              left: 80%
-              "--paper-item-icon-active-color": red
-          # Blue
-          - type: state-icon
-            entity: binary_sensor.blue_motion
-            style:
-              top: 20%
-              left: 80%
-              "--paper-item-icon-active-color": red
-          # Safe 1
-          - type: state-icon
-            entity: binary_sensor.safe_1
-            style:
-              top: 90%
-              left: 73%
-              "--paper-item-icon-color": silver
-              "--paper-item-icon-active-color": red
-          # Safe 1
-          - type: state-icon
-            entity: binary_sensor.safe_2
-            style:
-              top: 90%
-              left: 82%
-              "--paper-item-icon-color": silver
-              "--paper-item-icon-active-color": red
-          # temp
-          #- type: state-icon
-          #  entity: sensor.yellow_temperature
-          #  style:
-          #    top: 84.5%
-          #    left: 42%
-          #    color: white
-          #    --iron-icon-height: 10px
-          #    --iron-icon-width: 10px
-          - type: state-label
-            entity: sensor.yellow_temperature
-            style:
-              top: 85%
-              left: 46%
-              color: "#44739e"
-              font-size: "10px"
-          - type: state-label
-            entity: sensor.yellow_humidity
-            style:
-              top: 89%
-              left: 46%
-              color: "#44739e"
-              font-size: "10px"
 
 
 #      # Floor plan ----
@@ -154,22 +83,6 @@ views:
 #              "--paper-item-icon-color": silver
 #              "--paper-item-icon-active-color": red
 
-      # Last values -----
-      - type: entities
-        # title: Entrance
-        show_header_toggle: false
-        entities:
-          #- binary_sensor.door
-          #- binary_sensor.hallway_motion
-          - entity: sensor.door_last_close
-            secondary_info: last-changed
-          - entity: sensor.hallway_last_motion
-            secondary_info: last-changed
-          - entity: sensor.blue_last_motion
-            secondary_info: last-changed
-          - entity: sensor.green_last_motion
-            secondary_info: last-changed
-          - entity: sensor.last_motion_location
 
           
       # Persons ----
@@ -184,13 +97,17 @@ views:
           - entity: person.mindaugas
             secondary_info: last-changed
 
-      # Safes
-      - type: entities
-        entities:
-          - entity: binary_sensor.safe_1
-            secondary_info: last-changed
-          - entity: binary_sensor.safe_2
-            secondary_info: last-changed
+      - type: horizontal-stack
+        cards:
+        - type: sensor
+          name: "Living Room"
+          entity: sensor.yellow_temperature
+          #graph: line
+        - type: sensor
+          name: "Humidor"
+          entity: sensor.humidor_humidity
+          #graph: line
+
 
       - type: entities
         show_header_toggle: false
@@ -210,16 +127,130 @@ views:
 
 
 
-      - type: horizontal-stack
-        cards:
-        - type: sensor
-          name: "Living Room"
-          entity: sensor.yellow_temperature
-          #graph: line
-        - type: sensor
-          name: "Living Room"
-          entity: sensor.yellow_humidity
-          #graph: line
+
+
+
+  - icon: mdi:cctv
+    id: charts
+    title: Securty
+    cards:
+
+      # Floor plan 3D ----
+      - type: picture-elements
+        image: /local/img/3D-1024.jpg
+        elements:
+          # Door
+          - type: state-icon
+            entity: binary_sensor.door
+            style:
+              top: 10%
+              left: 46%
+              "--paper-item-icon-active-color": red
+          # Hallway
+          - type: state-icon
+            entity: binary_sensor.hallway_motion
+            style:
+              top: 43%
+              left: 43%
+              "--paper-item-icon-active-color": red
+          # Green
+          - type: state-icon
+            entity: binary_sensor.green_motion
+            style:
+              top: 40%
+              left: 78%
+              "--paper-item-icon-active-color": red
+          # Blue
+          - type: state-icon
+            entity: binary_sensor.blue_motion
+            style:
+              top: 20%
+              left: 78%
+              "--paper-item-icon-active-color": red
+          # Safe 1
+          - type: state-icon
+            entity: binary_sensor.safe_1
+            style:
+              top: 90%
+              left: 73%
+              "--paper-item-icon-color": silver
+              "--paper-item-icon-active-color": red
+          # Safe 1
+          - type: state-icon
+            entity: binary_sensor.safe_2
+            style:
+              top: 90%
+              left: 82%
+              "--paper-item-icon-color": silver
+              "--paper-item-icon-active-color": red
+          # temp
+          #- type: state-icon
+          #  entity: sensor.yellow_temperature
+          #  style:
+          #    top: 84.5%
+          #    left: 42%
+          #    color: white
+          #    --iron-icon-height: 10px
+          #    --iron-icon-width: 10px
+
+          # temp yellow
+          - type: state-label
+            entity: sensor.yellow_temperature
+            style:
+              top: 85%
+              left: 46%
+              color: "#44739e"
+              font-size: "10px"
+          - type: state-label
+            entity: sensor.yellow_humidity
+            style:
+              top: 88%
+              left: 46%
+              color: "#44739e"
+              font-size: "10px"
+          # temp blue
+          - type: state-label
+            entity: sensor.blue_temperature
+            style:
+              top: 18%
+              left: 84%
+              color: "#44739e"
+              font-size: "10px"
+          - type: state-label
+            entity: sensor.blue_humidity
+            style:
+              top: 21%
+              left: 84%
+              color: "#44739e"
+              font-size: "10px"
+
+
+      # Last values -----
+      - type: entities
+        # title: Entrance
+        show_header_toggle: false
+        entities:
+          #- binary_sensor.door
+          #- binary_sensor.hallway_motion
+          - entity: sensor.door_last_close
+            secondary_info: last-changed
+          - entity: sensor.hallway_last_motion
+            secondary_info: last-changed
+          - entity: sensor.blue_last_motion
+            secondary_info: last-changed
+          - entity: sensor.green_last_motion
+            secondary_info: last-changed
+          - entity: sensor.last_motion_location
+
+      # Safes
+      - type: entities
+        entities:
+          - entity: binary_sensor.safe_1
+            secondary_info: last-changed
+          - entity: binary_sensor.safe_2
+            secondary_info: last-changed
+
+
 
   - icon: mdi:chart-line
     id: charts
