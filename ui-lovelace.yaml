@@ -96,6 +96,9 @@ views:
             secondary_info: last-changed
           - entity: person.mindaugas
             secondary_info: last-changed
+          - entity: sensor.door_last_close
+            secondary_info: last-changed
+
 
       - type: horizontal-stack
         cards:

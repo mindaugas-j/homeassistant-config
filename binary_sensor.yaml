@@ -5,7 +5,7 @@
   ports:
     5: Door
 
-# PIR 1
+# PIR 1 Hallway
 - platform: mqtt
   name: "Hallway motion"
   state_topic: "sonoff1/tele/RESULT"
@@ -36,7 +36,7 @@
   qos: 0
 
 
-# Safe 1 Door Senson
+# Safe 1
 - platform: mqtt
   name: "Safe 1"
   state_topic: "sonoff1/tele/RESULT"
@@ -46,7 +46,7 @@
   device_class: door
   qos: 1
 
-# Safe 2 Door Senson
+# Safe 2
 - platform: mqtt
   name: "Safe 2"
   state_topic: "sonoff1/tele/RESULT"
