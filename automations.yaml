@@ -38,9 +38,12 @@
   action:
     - service: notify.notify
       data:
-        title: Door
-        message: Door opened
+        title: Home
+        message: Door opened on {{ now().strftime("%H:%M") }}
         data:
+          target:
+            - mjmobile
+          timestamp: '%m%d %H%M'
           vibrate: #vibrate 300ms,pause100,vibrate 400
             - 300
             - 100
@@ -73,5 +76,5 @@
   action:
     - service: notify.notify
       data:
-        title: Safe
-        message: Safe opened
+        title: Safe opened
+        message: Safe opened at {{ now().strftime("%H:%M") }}

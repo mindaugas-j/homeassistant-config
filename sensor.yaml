@@ -29,6 +29,50 @@
   unit_of_measurement: '%'
   state_topic: "shellies/shellyht-58F5E2/sensor/battery"
 
+# Blue room
+- platform: mqtt
+  name: Blue Temperature
+  device_class: temperature
+  unit_of_measurement: '°C'
+  state_topic: "shellies/shellyht-58FB74/sensor/temperature"
+  value_template: '{{value | round(0) }}'
+  #availability_topic: "shellies/announce"
+
+- platform: mqtt
+  name: Blue Humidity
+  device_class: humidity
+  unit_of_measurement: '%'
+  state_topic: "shellies/shellyht-58FB74/sensor/humidity"
+  value_template: '{{value | round(0) }}'
+
+- platform: mqtt
+  name: Blue Battery
+  device_class: battery
+  unit_of_measurement: '%'
+  state_topic: "shellies/shellyht-58FB74/sensor/battery"
+
+# Humidor
+- platform: mqtt
+  name: Humidor Temperature
+  device_class: temperature
+  unit_of_measurement: '°C'
+  state_topic: "shellies/shellyht-58F788/sensor/temperature"
+  value_template: '{{value | round(0) }}'
+  #availability_topic: "shellies/announce"
+
+- platform: mqtt
+  name: Humidor Humidity
+  device_class: humidity
+  unit_of_measurement: '%'
+  state_topic: "shellies/shellyht-58F788/sensor/humidity"
+  value_template: '{{value | round(0) }}'
+
+- platform: mqtt
+  name: Humidor Battery
+  device_class: battery
+  unit_of_measurement: '%'
+  state_topic: "shellies/shellyht-58F788/sensor/battery"
+
 - platform: template
   sensors:
     door_last_close:
@@ -66,3 +110,10 @@
           {% endif %}
         {% endfor %}
 
+- platform: systemmonitor
+  resources:
+    - type: processor_use
+    - type: memory_free
+    - type: disk_free
+      arg: /home
+    - type: last_boot

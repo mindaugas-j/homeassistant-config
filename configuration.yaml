@@ -74,9 +74,18 @@ group: !include groups.yaml
 script: !include scripts.yaml
 
 device_tracker:
+  # mobiles
+#  - platform: nmap_tracker
+#    home_interval: 10
+#    hosts: 192.168.0.1/24
+#    hosts:
+#      - 192.168.0.1
+#      - 192.168.0.84
+  # others
   - platform: nmap_tracker
     home_interval: 10
     hosts: 192.168.0.1/24
     exclude:
       - 192.168.0.1
+      - 192.168.0.84
 

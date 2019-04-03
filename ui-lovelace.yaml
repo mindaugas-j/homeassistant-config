@@ -192,12 +192,30 @@ views:
           - entity: binary_sensor.safe_2
             secondary_info: last-changed
 
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - entity: sensor.yellow_temperature
+            name: Living Room temperature
+          - entity: sensor.yellow_humidity
+            name: Living Room humidity
+          - type: divider
+          - entity: sensor.blue_temperature
+            name: Bedroom temperature
+          - entity: sensor.blue_humidity
+            name: Bedroom humidity
+          - type: divider
+          - sensor.humidor_temperature
+          - sensor.humidor_humidity
+
+
+
       - type: horizontal-stack
         cards:
         - type: sensor
           name: "Living Room"
           entity: sensor.yellow_temperature
-          #graph: line 
+          #graph: line
         - type: sensor
           name: "Living Room"
           entity: sensor.yellow_humidity
@@ -211,12 +229,20 @@ views:
         title: Temperature
         entities:
           - entity: sensor.yellow_temperature
-            name: Living Room
+            name: Living
+          - entity: sensor.blue_temperature
+            name: Bedroom
+          - entity: sensor.humidor_temperature
+            name: Humidor
       - type: history-graph
         title: Humidity
         entities:
           - entity: sensor.yellow_humidity
-            name: Living Room
+            name: Living
+          - entity: sensor.blue_humidity
+            name: Bedroom
+          - entity: sensor.humidor_humidity
+            name: Humidor
 
             
   - icon: mdi:lan
@@ -229,7 +255,16 @@ views:
         graph: line
         detail: 2
         hours_to_show: 24
-  
+
+      - type: entities
+        title: System
+        show_header_toggle: false
+        entities:
+          - sensor.processor_use
+          - sensor.memory_free
+          - sensor.disk_free_home
+          - sensor.last_boot
+
       - type: entities
         title: Devices
         show_header_toggle: false
@@ -242,6 +277,8 @@ views:
           - device_tracker.google_home_mini_dlink
           - device_tracker.samsung_dlink
           - device_tracker.shellyht_58f5e2_dlink
+          - device_tracker.shellyht_58fb74_dlink
+          - device_tracker.shellyht_58f788_dlink
 
       - type: entities
         title: Network
@@ -254,7 +291,9 @@ views:
         title: Bateries
         show_header_toggle: false
         entities:
-          - entity: sensor.yellow_battery    
+          - entity: sensor.yellow_battery
             name: Shelly Living Room
-
-      
+          - entity: sensor.blue_battery
+            name: Shelly Bedroom Room
+          - entity: sensor.humidor_battery
+            name: Shelly Humidor
