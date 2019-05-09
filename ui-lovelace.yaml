@@ -310,6 +310,7 @@ views:
           - device_tracker.chromecast_dlink
           - device_tracker.google_home_mini_dlink
           - device_tracker.samsung_dlink
+          - device_tracker.meye_adadcabc_dlink
           - device_tracker.shellyht_58f5e2_dlink
           - device_tracker.shellyht_58fb74_dlink
           - device_tracker.shellyht_58f788_dlink
@@ -322,7 +323,7 @@ views:
           - sensor.dir_825acg1_kbyte_sec_sent
 
       - type: entities
-        title: Bateries
+        title: Batteries
         show_header_toggle: false
         entities:
           - entity: sensor.yellow_battery
